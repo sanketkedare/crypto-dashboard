@@ -39,7 +39,7 @@ const GraphComponent = () => {
     setCoinId(c.id);
     setAPI(HistoricalChart(coin.id, days, currency));
     getData(history);
-  }, [coin, days, currency,history]);
+  }, [coin, currency]);
 
   return (
     <div className="bg-white rounded-xl p-2 my-2 border border-black">
