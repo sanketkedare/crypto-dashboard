@@ -8,7 +8,6 @@ const initialState = {
     symbol: "₹",
   },
 };
-
 export const currencyReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENCY:
@@ -23,6 +22,8 @@ export const currencyReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+
 
 const initialCrypto = {
 
@@ -64,6 +65,8 @@ export const cryptoReducer = (state = initialCrypto, action) => {
       return state;
   }
 };
+
+
 
 export const marketDataReducer = (state = Market  , action) => {
   switch(action.type) {

@@ -7,12 +7,10 @@ import PortFollioComponent from "./Components/Portfollio/PortFollioComponent";
 
 function App() {
   return (
-    <div >
-      <Navbar />
-      <div
-        id="cryptobody"
-        className="lg:flex lg:w-[95%] mt-2 m-auto"
-      >
+    <div>
+      <Navbar/>
+      <div id="cryptobody"className="lg:flex lg:w-[95%] mt-2 m-auto">
+
         {/* Body */}
         <div className="lg:w-3/4 p-3">
           <Header/>
@@ -24,6 +22,7 @@ function App() {
         <div className="lg:w-1/4 p-3">
           <Market />
         </div>
+
       </div>
     </div>
   );

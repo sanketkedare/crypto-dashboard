@@ -1,11 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import getPrice from "./getPrice";
 
 const TitleBar = ({day,chart,dayType,chartType}) => 
 {
   const coin = useSelector((state) => state.crypto);
   const curr = useSelector((state) => state.currency.currency.symbol)
-  const price = useSelector((state) => state.market).find((c)=>c.name === coin.name).current_price
+  const Market = useSelector(state => state.market);
+
+  const price = getPrice(Market,coin.name);
 
   return (
     <div className="flex flex-wrap w-full lg:justify-between justify-center">
