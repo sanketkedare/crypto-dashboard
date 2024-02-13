@@ -6,9 +6,9 @@ const TitleBar = ({day,chart,dayType,chartType}) =>
 {
   const coin = useSelector((state) => state.crypto);
   const curr = useSelector((state) => state.currency.currency.symbol)
-  const Market = useSelector(state => state.market);
+  const market = useSelector(state => state.market);
 
-  const price = getPrice(Market,coin.name);
+  const price = getPrice(market, coin.name) || 0;
 
   return (
     <div className="flex flex-wrap w-full lg:justify-between justify-center">
