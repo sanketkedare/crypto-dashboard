@@ -1,7 +1,6 @@
 const getPrice = (data, name) => {
 
-    const { current_price } = Object.values(data).find((item)=>item.name === name);
-    return current_price;
+    return Object.values(data).find((item)=>item.name === name).current_price;
 }
 
 export default getPrice;
