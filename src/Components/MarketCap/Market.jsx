@@ -10,7 +10,7 @@ const Market = () =>
 {
   const dispatch = useDispatch();
   const currency = useSelector((state)=>state.currency.currency)
-  const [currentMarketData, setCurrentMarketData] = useState(null);
+  const [currentMarketData, setCurrentMarketData] = useState(MyData);
   
   const API = MarketData(currency.code);
   
@@ -26,7 +26,7 @@ const Market = () =>
     }
     catch(err)
     {
-       setCurrentMarketData(MyData)
+      console.log(err)
        dispatch(setMarketData(MyData))
     }
   }
