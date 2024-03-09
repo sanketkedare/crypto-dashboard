@@ -1,6 +1,9 @@
+/*eslint-disable*/
+
 import React, { useEffect, useState } from "react";
 import GraphData from "../../Utils/GraphData.json";
-
+import { Bar, Line } from "react-chartjs-2";
+import {aDay, daySwitch, month, week, year} from "./utils";
 
 import {
   Chart as Chartjs,
@@ -13,7 +16,7 @@ import {
   Legend,
 } from "chart.js";
 
-import { Bar, Line } from "react-chartjs-2";
+
 
 Chartjs.register(
   BarElement,
@@ -25,67 +28,29 @@ Chartjs.register(
   Legend
 );
 
-const ChartComponent = ({ day, chart, d }) => 
-{
-  const [data, setData] = useState(GraphData)
-   
-  useEffect(()=>{
-
-    if(d)
-    {
-      setData(d)
-    }
-
-  },[d]) 
-
-
-  const year = Array.from({ length: 365 }, (_, index) => index + 1);
-  const month = [
-    
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec","Jan",
-    "Feb",
-  ];
-  const aDay = Array.from({ length: 24 }, (_, index) => index + 1);
-  const week = Array.from({ length: 7 }, (_, index) => index + 1);
+const ChartComponent = ({ day, chart, d }) => {
+  const [data, setData] = useState(GraphData);
   const [myLabels, setMyLabels] = useState(year);
 
+
   useEffect(() => {
-    switch (day) {
-      case 1:
-        setMyLabels(aDay);
-        break;
-      case 7:
-        setMyLabels(week);
-        break;
-      case 30:
-        setMyLabels(month);
-        break;
-      default:
-        setMyLabels(year);
+    if (d) {
+      setData(d);
     }
+  }, [d]);
+
+
+  useEffect(() => {
+    setMyLabels(daySwitch(day,aDay,week,month,year));
   }, [day]);
 
-
-  
-
   const coinData = {
-
-    labels: myLabels.map(label => label),
-
+    labels: myLabels.map((label) => label),
     datasets: [
       {
         label: "Price in Thousands",
         data: data.market_caps.map((item) => Math.floor(item[1]) / 1000000),
-        backgroundColor: ["red", "yellow", "green", "orange","pink"],
+        backgroundColor: ["red", "yellow", "green", "orange", "pink"],
         borderColor: "blue",
         tension: 0.1,
       },

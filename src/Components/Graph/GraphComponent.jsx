@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { HistoricalChart } from "../../APIs/api";
@@ -9,42 +11,44 @@ import ChartComponent from "./ChartComponent";
 const GraphComponent = () => {
   const coin = useSelector((state) => state.crypto);
   const currency = useSelector((state) => state.currency.currency.code);
-
   const [selected, setSelected] = useState(coin);
   const [coinId, setCoinId] = useState(selected.id);
   const [days, setDays] = useState(365);
-
   const [API, setAPI] = useState(HistoricalChart(coinId, days, currency));
   const [history, setHistory] = useState("");
-
   const [chartType, setChartType] = useState("Bar");
-  
 
   const getData = async () => {
-    try 
-    {
+    try {
       const data = await fetch(API);
       const JSON = await data.json();
       setHistory(JSON);
-    } 
-    catch (err) 
-    {
+    } catch (err) {
       setHistory(GraphData);
     }
   };
 
-  useEffect(() => {
+  const setParameters = async () => {
     const c = MarketData.filter((e) => e.name === coin.name);
     setSelected(c);
     setCoinId(c.id);
     setAPI(HistoricalChart(coin.id, days, currency));
-    getData(history);
+    getData();
+  }
+
+  useEffect(() => {
+    setParameters();
   }, [coin, currency]);
 
   return (
     <div className="bg-white rounded-xl p-2 my-2 border border-black">
-      <TitleBar dayType={setDays} chartType={setChartType} day={days} chart={chartType} />
-      <ChartComponent day={days} chart={chartType} data={history}/>
+      <TitleBar
+        dayType={setDays}
+        chartType={setChartType}
+        day={days}
+        chart={chartType}
+      />
+      <ChartComponent day={days} chart={chartType} d={history} />
     </div>
   );
 };

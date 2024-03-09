@@ -15,7 +15,6 @@ const Shimmer = () => {
       <div className="h-[10%] flex items-center border-b bg-gray-100"></div>
       <div className="h-[10%] flex items-center border-b bg-gray-100"></div>
       <div className="h-[10%] flex items-center border-b bg-gray-100"></div>
-
     </div>
   );
 };

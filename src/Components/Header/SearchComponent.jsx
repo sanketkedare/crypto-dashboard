@@ -1,10 +1,10 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import CoinList from "../../Utils/Market.json";
 import { useDispatch } from "react-redux";
 import { setCrypto } from "../../Data/Action";
+import SearchDropdown from "./SearchDropdown";
 
 const SearchComponent = () => {
-    
   const dispach = useDispatch();
   const [text, setText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -15,7 +15,6 @@ const SearchComponent = () => {
       item.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredData(filteredResults);
-    
   };
 
   const handleChange = (e) => {
@@ -24,11 +23,11 @@ const SearchComponent = () => {
     handleSearch(searchText);
   };
 
-  const handelSelect = (c) =>{
-    setText("")
-    setPlaceholder(c.name)
+  const handelSelect = (c) => {
+    setText("");
+    setPlaceholder(c.name);
     dispach(setCrypto(c));
-  }
+  };
 
   return (
     <>
@@ -40,16 +39,10 @@ const SearchComponent = () => {
         placeholder={placeholder}
       />
       {text && (
-        <div className="absolute bg-gray-800 w-[50%] max-h-72 overflow-y-auto mt-7 ml-24 p-3 rounded-xl border border-black text-white">
-          {filteredData.map((item) => (
-            <div key={item.name}  className="flex gap-12 py-2 px-2 border-b hover:bg-sky-500 hover:text-black rounded-xl"
-            onClick={()=>handelSelect(item)}
-            >
-              <img alt={item.name} src={item.image} width={"20px"}/>
-              {item.name}
-            </div>
-          ))}
-        </div>
+        <SearchDropdown
+          filteredData={filteredData}
+          handelSelect={handelSelect}
+        />
       )}
     </>
   );
