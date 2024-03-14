@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import calculateExchangeRate from "./calculate";
-import ExchangeCoin_Sell from "./ExchangeCoinHelper";
+import ExchangeCoinSell from "./ExchangeCoinHelper";
 
 const ExchangeCoin = () => 
 {
@@ -28,7 +28,7 @@ const ExchangeCoin = () =>
         <h1 className="text-[15px] text-left font-bold my-3">Exchange Coin</h1>
 
         {/* Sell */}
-        <ExchangeCoin_Sell
+        <ExchangeCoinSell
           method={"Sell"}
           coin={sell}
           setCoin={setSell}
@@ -39,7 +39,7 @@ const ExchangeCoin = () =>
         />
 
         {/* Buy */}
-        <ExchangeCoin_Sell
+        <ExchangeCoinSell
           method={"Buy"}
           coin={buy}
           setCoin={setBuy}

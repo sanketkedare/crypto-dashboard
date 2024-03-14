@@ -2,7 +2,7 @@ import React from "react";
 import ExchangeCoinDropDown from "./ExchangeCoinDropDown";
 import ExchangeCoinInfo from "./ExchangeCoinInfo";
 
-const ExchangeCoin_Sell = ({
+const ExchangeCoinSell = ({
   method,
   coin,
   setCoin,
@@ -37,4 +37,4 @@ const ExchangeCoin_Sell = ({
   );
 };
 
-export default ExchangeCoin_Sell;
+export default ExchangeCoinSell;
