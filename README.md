@@ -32,7 +32,7 @@ The project is a frontend application developed using React.js and styled with T
 ## Installation
 
    ```
-   git clone https://github.com/yourusername/cryptocurrency-dashboard.git
+   git clone git@github.com:sanketkedare/crypto-dashboard.git
 
    cd cryptocurrency-dashboard 
 
