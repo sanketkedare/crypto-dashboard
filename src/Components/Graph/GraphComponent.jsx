@@ -7,6 +7,7 @@ import GraphData from "../../Utils/GraphData.json";
 import MarketData from "../../Utils/Market.json";
 import TitleBar from "./TitleBar";
 import ChartComponent from "./ChartComponent";
+import Loder from "./Loder";
 
 const GraphComponent = () => {
   const coin = useSelector((state) => state.crypto);
@@ -20,6 +21,7 @@ const GraphComponent = () => {
 
   const getData = async () => {
     try {
+      setHistory("Loding")
       const data = await fetch(API);
       const JSON = await data.json();
       setHistory(JSON);
@@ -48,7 +50,8 @@ const GraphComponent = () => {
         day={days}
         chart={chartType}
       />
-      <ChartComponent day={days} chart={chartType} d={history} />
+      {history === "Loding" ? <Loder/> : (<ChartComponent day={days} chart={chartType} d={history} />)}
+      
     </div>
   );
 };

@@ -1,9 +1,7 @@
-/*eslint-disable*/
-
 import React, { useEffect, useState } from "react";
 import GraphData from "../../Utils/GraphData.json";
 import { Bar, Line } from "react-chartjs-2";
-import {aDay, daySwitch, month, week, year} from "./utils";
+import { aDay, daySwitch, month, week, year } from "./utils";
 
 import {
   Chart as Chartjs,
@@ -15,8 +13,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
-
 
 Chartjs.register(
   BarElement,
@@ -32,20 +28,20 @@ const ChartComponent = ({ day, chart, d }) => {
   const [data, setData] = useState(GraphData);
   const [myLabels, setMyLabels] = useState(year);
 
-
   useEffect(() => {
     if (d) {
       setData(d);
     }
   }, [d]);
 
-
   useEffect(() => {
-    setMyLabels(daySwitch(day,aDay,week,month,year));
+    setMyLabels(daySwitch(day, aDay, week, month, year));
   }, [day]);
 
+
+
   const coinData = {
-    labels: myLabels.map((label) => label),
+    labels: myLabels,
     datasets: [
       {
         label: "Price in Thousands",
@@ -57,7 +53,37 @@ const ChartComponent = ({ day, chart, d }) => {
     ],
   };
 
-  const options = {};
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: "black", // Change legend label color
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "black", // Change x-axis labels color
+        },
+        title: {
+          display: true,
+          text: 'Time Period',
+          color: 'black'
+        }
+      },
+      y: {
+        ticks: {
+          color: "black", // Change y-axis labels color
+        },
+        title: {
+          display: true,
+          text: 'In Thousands',
+          color: 'black'
+        }
+      },
+    },
+  };
 
   return (
     <div className="lg:h-[45vh] flex justify-center items-center w-full">
