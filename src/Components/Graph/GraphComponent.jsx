@@ -9,6 +9,7 @@ import TitleBar from "./TitleBar";
 import ChartComponent from "./ChartComponent";
 import Loder from "./Loder";
 
+
 const GraphComponent = () => {
   const coin = useSelector((state) => state.crypto);
   const currency = useSelector((state) => state.currency.currency.code);
