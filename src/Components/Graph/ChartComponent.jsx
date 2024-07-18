@@ -14,6 +14,7 @@ import {
   Legend,
 } from "chart.js";
 
+// Register the chart components
 Chartjs.register(
   BarElement,
   CategoryScale,
@@ -25,70 +26,72 @@ Chartjs.register(
 );
 
 const ChartComponent = ({ day, chart, d }) => {
-  const [data, setData] = useState(GraphData);
-  const [myLabels, setMyLabels] = useState(year);
+  const [data, setData] = useState(GraphData); // State for graph data
+  const [myLabels, setMyLabels] = useState(year); // State for chart labels
 
+  // Update data if the 'd' prop changes
   useEffect(() => {
     if (d) {
       setData(d);
     }
   }, [d]);
 
+  // Update labels based on the 'day' prop
   useEffect(() => {
     setMyLabels(daySwitch(day, aDay, week, month, year));
   }, [day]);
 
-
-
+  // Data for the chart
   const coinData = {
     labels: myLabels,
     datasets: [
       {
         label: "Price in Thousands",
-        data: data.market_caps.map((item) => Math.floor(item[1]) / 1000000),
+        data: data.market_caps.map((item) => Math.floor(item[1]) / 1000000), // Transform market cap data
         backgroundColor: ["red", "yellow", "green", "orange", "pink"],
         borderColor: "blue",
-        tension: 0.1,
+        tension: 0.1, // For line chart smoothness
       },
     ],
   };
 
+  // Options for the chart
   const options = {
     plugins: {
       legend: {
         labels: {
-          color: "black", // Change legend label color
+          color: "black", // Legend labels color
         },
       },
     },
     scales: {
       x: {
         ticks: {
-          color: "black", // Change x-axis labels color
+          color: "black", // X-axis labels color
         },
         title: {
           display: true,
           text: 'Time Period',
-          color: 'black'
-        }
+          color: 'black', // X-axis title color
+        },
       },
       y: {
         ticks: {
-          color: "black", // Change y-axis labels color
+          color: "black", // Y-axis labels color
         },
         title: {
           display: true,
           text: 'In Thousands',
-          color: 'black'
-        }
+          color: 'black', // Y-axis title color
+        },
       },
     },
   };
 
   return (
-    <div className="lg:h-[45vh] flex justify-center items-center w-full">
-      {chart === "Line" && <Line data={coinData} options={options} />}
-      {chart === "Bar" && <Bar data={coinData} options={options} />}
+    <div className="lg:h-[45vh] h-[40vh] flex justify-center items-center w-full ">
+      {chart === "Line" && <Line data={coinData} options={options} className="shadow-md"/>}
+      {chart === "Bar" && <Bar data={coinData} options={options}  className="shadow-md"/>}
     </div>
   );
 };

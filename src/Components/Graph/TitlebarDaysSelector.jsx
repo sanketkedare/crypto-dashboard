@@ -1,6 +1,8 @@
 import React from "react";
 import { days } from "./utils";
 
+// Day Selector Comonent 
+
 const TitlebarDaysSelector = ({ day, dayType }) => {
   return (
     <div className="flex justify-between my-2">

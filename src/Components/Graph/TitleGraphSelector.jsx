@@ -1,5 +1,7 @@
 import React from "react";
 
+// Graph Selector Component
+
 const TitleGraphSelector = ({ chart, chartType }) => {
   const type = ["Bar", "Line"];
 

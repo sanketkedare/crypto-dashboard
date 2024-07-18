@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { getPrice } from './utils';
 
+// Graph Info Component - Information about Graph
 const TitlebarInfo = () => 
 {
  const coin = useSelector((state) => state.crypto);
