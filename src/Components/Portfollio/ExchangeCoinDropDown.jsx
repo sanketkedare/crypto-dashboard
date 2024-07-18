@@ -1,7 +1,7 @@
 import React from "react";
 import CoinList from "../../Utils/Exchange.json";
 
-
+// Exchange Coin Dropdown Component - Coin Dropdown
 const ExchangeCoinDropDown = ({method,setUnit, setCoin, setCoinOpen}) => {
   return (
     <div

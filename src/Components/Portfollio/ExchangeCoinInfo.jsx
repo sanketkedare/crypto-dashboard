@@ -1,6 +1,7 @@
 import React from 'react'
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md'
 
+// Exchnage Coin Information Component
 const ExchangeCoinInfo = ({method,coin,setCoinOpen }) => {
   return (
     <>

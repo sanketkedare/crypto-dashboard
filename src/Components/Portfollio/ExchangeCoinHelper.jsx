@@ -2,6 +2,7 @@ import React from "react";
 import ExchangeCoinDropDown from "./ExchangeCoinDropDown";
 import ExchangeCoinInfo from "./ExchangeCoinInfo";
 
+// Common Component for Exchenge Coin
 const ExchangeCoinSell = ({
   method,
   coin,

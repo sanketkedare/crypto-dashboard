@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import calculateExchangeRate from "./calculate";
 import ExchangeCoinSell from "./ExchangeCoinHelper";
 
+// Exchange Coin Component
 const ExchangeCoin = () => 
 {
   const [sell, setSell] = useState("Bitcoin");
