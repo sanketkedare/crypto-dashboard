@@ -10,6 +10,7 @@ const DashBoard = () => {
     <div>
       <Navbar />
       <div id="cryptobody" className="lg:flex lg:w-[95%] mt-2 m-auto">
+        
         {/* Body */}
         <div className="lg:w-3/4 p-3">
           <Header />

@@ -2,22 +2,15 @@ import React, { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrency } from "../../Data/Action";
-import { currency, symbol, flags } from "../../Utils/utils";
 import CurrencyDropdown from "./CurrencyDropdown";
 
 const CurrencyComponent = () => {
   const dispatch = useDispatch();
-  const curr = useSelector((state) => state.currency.currency);
-
+  const current = useSelector((state) => state.currency.currency);
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [index, setIndex] = useState(0);
 
-  const currencyChange = (event) => {
-    const selectedIndex = event.target.value;
-    const code = currency[selectedIndex];
-    const sym = symbol[selectedIndex];
-    setIndex(selectedIndex);
-    dispatch(setCurrency(code, sym));
+  const changeCountry = (country) => {
+    dispatch(setCurrency(country.currency, country.symbol, country.flag));
     setOpenDropdown(false);
   };
 
@@ -28,12 +21,12 @@ const CurrencyComponent = () => {
       onMouseLeave={() => setOpenDropdown(false)}
     >
       <img
-        src={flags[index]}
-        alt={curr.code}
+        src={current.flag}
+        alt={current.code}
         className="w-6 h-4 my-auto border border-black"
       />
-      {curr.symbol} {curr.code} <IoIosArrowDropdownCircle />
-      {openDropdown && <CurrencyDropdown currencyChange={currencyChange} />}
+      {current.symbol} {current.code} <IoIosArrowDropdownCircle />
+      {openDropdown && <CurrencyDropdown changeCountry={changeCountry} />}
     </button>
   );
 };

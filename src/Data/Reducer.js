@@ -6,6 +6,7 @@ const initialState = {
   currency: {
     code: "INR",
     symbol: "₹",
+    flag:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_India.png/2560px-Flag_of_India.png'
   },
 };
 export const currencyReducer = (state = initialState, action) => {
@@ -16,6 +17,7 @@ export const currencyReducer = (state = initialState, action) => {
         currency: {
           code: action.payload.code,
           symbol: action.payload.symbol,
+          flag: action.payload.flag
         },
       };
     default:
