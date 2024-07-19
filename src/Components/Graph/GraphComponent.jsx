@@ -1,16 +1,16 @@
 /* eslint-disable */
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { HistoricalChart } from "../../APIs/api";
 import GraphData from "../../Utils/GraphData.json";
 import MarketData from "../../Utils/Market.json";
 import TitleBar from "./TitleBar";
-import ChartComponent from "./ChartComponent";
 import Loder from "./Loder";
 
-// Graph Component
+// Lazy load the ChartComponent
+const ChartComponent = lazy(() => import("./ChartComponent"));
 
+// Graph Component
 const GraphComponent = () => {
   // Redux selectors to get the current coin and currency from the state
   const coin = useSelector((state) => state.crypto);
@@ -55,7 +55,9 @@ const GraphComponent = () => {
       {history === "Loading" ? (
         <Loder />
       ) : (
-        <ChartComponent day={days} chart={chartType} d={history} />
+        <Suspense fallback={<Loder />}>
+          <ChartComponent day={days} chart={chartType} d={history} />
+        </Suspense>
       )}
     </div>
   );

@@ -5,6 +5,8 @@ import GraphComponent from "./Graph/GraphComponent";
 import PortFollioComponent from "./Portfollio/PortFollioComponent";
 import Market from "./MarketCap/Market";
 
+// Main Component 
+
 const DashBoard = () => {
   return (
     <div>
@@ -12,16 +14,16 @@ const DashBoard = () => {
       <div id="cryptobody" className="lg:flex lg:w-[95%] mt-2 m-auto">
         
         {/* Body */}
-        <div className="lg:w-3/4 p-3">
+        <section className="lg:w-3/4 p-3">
           <Header />
           <GraphComponent />
           <PortFollioComponent />
-        </div>
+        </section>
 
         {/* Market Cap */}
-        <div className="lg:w-1/4 p-3">
+        <section className="lg:w-1/4 p-3">
           <Market />
-        </div>
+        </section>
       </div>
     </div>
   );
